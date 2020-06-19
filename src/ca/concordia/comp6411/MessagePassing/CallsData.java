@@ -12,6 +12,15 @@ import java.util.Arrays;
 public class CallsData {
 	private String sender;
 	private String[] receivers;
+	/**
+	 * @param sender
+	 * @param receivers
+	 */
+	public CallsData(String sender, String[] receivers) {
+		super();
+		this.sender = sender;
+		this.receivers = receivers;
+	}
 	public String getSender() {
 		return sender;
 	}
