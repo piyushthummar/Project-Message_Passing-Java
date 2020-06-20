@@ -1,5 +1,7 @@
 import java.util.List;
 
+import sun.swing.plaf.synth.SynthFileChooserUIImpl;
+
 /**
  * 
  */
@@ -19,8 +21,45 @@ public class MasterThread extends Thread{
 		this.callsData = callsData;
 	}
 	
-	public void terminateMaster(){
+	public void shutDownProcess(){
 		processComplete = true;
+	}
+	
+	int processCounter = 0;
+	int count = 0;
+	public void terminateMaster(String masterProcessName){
+		synchronized (callsData) {
+			this.waitAndNotifyProcess();
+			this.shutDownProcess();
+			System.out.println("\nProcess " + masterProcessName + " has received no calls for 1 second, ending...\n");
+			count++;
+			if(count == processCounter){
+				try {
+					callsData.wait(10 * 1000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				System.out.println("\nMaster has received no replies for 10 seconds, ending...\n");
+			}
+		}
+	}
+	
+	private void waitAndNotifyProcess(){
+		
+			if(processCounter < callsData.size() - 1){
+				try {
+					callsData.wait(5000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			} else {
+				callsData.notifyAll();
+			}
+		
+	}
+	
+	public void printMessage(String message, long timeStamp){
+		System.out.println(message + " [" + timeStamp + "]");
 	}
 	
 	public void run() {
