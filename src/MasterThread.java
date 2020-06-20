@@ -1,6 +1,5 @@
 import java.util.List;
 
-import sun.swing.plaf.synth.SynthFileChooserUIImpl;
 
 /**
  * 
