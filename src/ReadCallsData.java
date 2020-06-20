@@ -1,7 +1,7 @@
 /**
  * 
  */
-package ca.concordia.comp6411.MessagePassing;
+//package ca.concordia.comp6411.MessagePassing;
 
 import java.io.BufferedReader;
 import java.io.File;

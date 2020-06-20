@@ -1,7 +1,7 @@
 /**
  * 
  */
-package ca.concordia.comp6411.MessagePassing;
+//package ca.concordia.comp6411.MessagePassing;
 
 import java.util.Arrays;
 
