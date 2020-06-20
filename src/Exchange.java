@@ -15,10 +15,10 @@ public class Exchange {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		List<CallsData> callRecords = ReadCallsData.readCallLogs("src/ca/concordia/comp6411/MessagePassing/calls.txt");
-//		for(CallsData call : callRecords){
-//			System.out.println(call.toString());
-//		}
+		System.out.println(System.getProperty("user.dir"));
+		List<CallsData> callRecords = ReadCallsData.readCallLogs("src/calls.txt");
+		MasterThread masterProcess = new MasterThread(callRecords);
+		masterProcess.start();
 	}
 
 }

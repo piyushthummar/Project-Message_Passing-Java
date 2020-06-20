@@ -31,7 +31,7 @@ public class MasterThread extends Thread{
 		synchronized (callsData) {
 			this.waitAndNotifyProcess();
 			this.shutDownProcess();
-			System.out.println("\nProcess " + masterProcessName + " has received no calls for 1 second, ending...\n");
+			System.out.println("\nProcess " + masterProcessName + " has received no calls for 5 second, ending...");
 			count++;
 			if(count == processCounter){
 				try {
@@ -39,7 +39,7 @@ public class MasterThread extends Thread{
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-				System.out.println("\nMaster has received no replies for 10 seconds, ending...\n");
+				System.out.println("\nMaster has received no replies for 10 seconds, ending...");
 			}
 		}
 	}
@@ -47,6 +47,7 @@ public class MasterThread extends Thread{
 	private void waitAndNotifyProcess(){
 		
 			if(processCounter < callsData.size() - 1){
+				processCounter++;
 				try {
 					callsData.wait(5000);
 				} catch (InterruptedException e) {
